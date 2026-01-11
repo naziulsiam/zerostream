@@ -5,7 +5,7 @@ const channels = [
     name: "BTV",
     category: "Bangladeshi",
     logo: "https://ssl.com.bd/sites/default/files/BTV%20Logo%20Gallery.png",
-    streams: [{ label: "Main", url: "https://owrcovcrpy.gpcdn.net/bpk-tv/1709/output/index.m3u8" }]
+    streams: [{ label: "Main", url: "http://103.199.161.254/Content/b4umusic/Live/Channel(B4Umusic)/Stream(01)/index.m3u8" }]
   },
   {
     id: "somoy-tv",
@@ -109,8 +109,15 @@ const channels = [
     id: "atn-bangla-uk",
     name: "ATN Bangla UK",
     category: "Bangladeshi",
-    logo: "https://s6.gifyu.com/images/image27cfa7002786c232.png",
+    logo: "https://raw.githubusercontent.com/subirkumarpaul/Logo/main/ATN%20Bangla.png",
     streams: [{ label: "Main", url: "https://app.ncare.live/live-orgin/atnbanglauk-off.stream/playlist.m3u8" }]
+  },
+  {
+    id: "gazi-tv",
+    name: "Gazi TV",
+    category: "Bangladeshi",
+    logo: "https://i.imgur.com/6sDqVQr.png",
+    streams: [{ label: "Main", url: "http://itpolly.iptv.digijadoo.net/live/gazi_tv/chunks.m3u8" }]
   },
   {
     id: "star-jalsha",
@@ -155,6 +162,62 @@ const channels = [
     streams: [{ label: "Main", url: "https://amg01448-samsungin-abpananda-samsungin-ad-pw.amagi.tv/playlist/amg01448-samsungin-abpananda-samsungin/playlist.m3u8" }]
   },
   {
+    id: "zee-tv",
+    name: "ZEE TV",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/en/2/2b/Zee_TV_logo.svg",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/zee_tv/chunks.m3u8" }]
+  },
+  {
+    id: "zee-cinema",
+    name: "ZEE Cinema",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/90/Zee_Cinema_logo.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/zee_cinema/chunks.m3u8" }]
+  },
+  {
+    id: "zee-bollywood",
+    name: "ZEE Bollywood",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/en/5/5f/Zee_Bollywood_logo.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/zee_classic/chunks.m3u8" }]
+  },
+  {
+    id: "star-plus-hd",
+    name: "STAR PLUS HD",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Star_Plus_HD_logo.svg/1280px-Star_Plus_HD_logo.svg.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/star_plus_hd/chunks.m3u8" }]
+  },
+  {
+    id: "star-plus-sd",
+    name: "STAR PLUS SD",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Star_Plus_HD_logo.svg/1280px-Star_Plus_HD_logo.svg.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/star_plus/chunks.m3u8" }]
+  },
+  {
+    id: "star-gold",
+    name: "STAR GOLD",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/en/0/01/Star_Gold_logo.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/star_gold/chunks.m3u8" }]
+  },
+  {
+    id: "colors-hd",
+    name: "Colors HD",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/en/7/7e/Colors_TV_logo.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/colors_hd/chunks.m3u8" }]
+  },
+  {
+    id: "bollywood-hd",
+    name: "Bollywood HD",
+    category: "Indian",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Zee_Bollywood_logo.png/320px-Zee_Bollywood_logo.png",
+    streams: [{ label: "Main", url: "http://telekomtv-ro.akamaized.net/shls/LIVE$BollywoodHD/247.m3u8/Level(3670016)?start=LIVE&end=END" }]
+  },
+  {
     id: "atn-music",
     name: "ATN Music",
     category: "Music",
@@ -166,7 +229,7 @@ const channels = [
     name: "ATN Music Premium",
     category: "Music",
     logo: "https://raw.githubusercontent.com/subirkumarpaul/Logo/main/ATN%20Music.png",
-    streams: [{ label: "Main", url: "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnmusic.stream/playlist.m3u8" }]
+    streams: [{ label: "Main", url: "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI/atnmusic.stream/playlist.m3u8" }]
   },
   {
     id: "duronto-tv",
@@ -204,6 +267,20 @@ const channels = [
     streams: [{ label: "Main", url: "https://tiger-hub.vercel.app@vodzong.mjunoon.tv:8087/streamtest/Animal-Planet-158-3/playlist.m3u8" }]
   },
   {
+    id: "natgeo-wild",
+    name: "NatGeo Wild",
+    category: "Documentary",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Nat-geo-wild-logo.svg/1280px-Nat-geo-wild-logo.svg.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/nat_geo_wild/chunks.m3u8" }]
+  },
+  {
+    id: "natgeo-people",
+    name: "NatGeo People",
+    category: "Documentary",
+    logo: "https://upload.wikimedia.org/wikipedia/en/1/1f/Nat_Geo_People_logo.png",
+    streams: [{ label: "Main", url: "https://itpolly.iptv.digijadoo.net/live/nat_geo_people/chunks.m3u8" }]
+  },
+  {
     id: "saudi-quran",
     name: "Saudi Quran",
     category: "Islamic",
@@ -223,5 +300,12 @@ const channels = [
     category: "Sports",
     logo: "https://i.postimg.cc/t4cxjxRj/Deshi-TV.jpg",
     streams: [{ label: "Main", url: "https://padmaonline.duckdns.org:8088/T-Sport/tracks-v1a1/mono.m3u8" }]
+  },
+  {
+    id: "d-sports",
+    name: "D Sports",
+    category: "Sports",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/DSports_India_logo.svg/800px-DSports_India_logo.svg.png",
+    streams: [{ label: "Main", url: "http://jiocgehub.jio.ril.com/Dsports_HD/Dsports_HD_800.m3u8" }]
   }
 ];
