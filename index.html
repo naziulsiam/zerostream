@@ -1,126 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZeroStream - Premium IPTV Streaming</title>
-  <!-- External Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
-  <!-- Local Assets -->
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroStream - Your Personal IPTV Experience</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
-    <div class="navbar-brand" onclick="goHome()">◆ ZeroStream</div>
-    <div class="navbar-nav">
-      <div class="nav-item active" onclick="switchTab('home')">Home</div>
-      <div class="nav-item" onclick="switchTab('bangladeshi')">Bangladeshi</div>
-      <div class="nav-item" onclick="switchTab('indian')">Indian Bangla</div>
-      <div class="nav-item" onclick="switchTab('music')">Music</div>
-      <div class="nav-item" onclick="switchTab('kids')">Kids</div>
-      <div class="nav-item" onclick="switchTab('docs')">Documentary</div>
-      <div class="nav-item" onclick="switchTab('islamic')">Islamic</div>
-      <div class="nav-item" onclick="switchTab('sports')">Sports</div>
-    </div>
-  </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 10L22 16L12 22V10Z" fill="currentColor"/>
+                </svg>
+                <span>ZeroStream</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-genre="all" data-section="channels">All Channels</button>
+                <button class="nav-btn" data-genre="entertainment" data-section="channels">Entertainment</button>
+                <button class="nav-btn" data-genre="sports" data-section="channels">Sports</button>
+                <button class="nav-btn" data-genre="news" data-section="channels">News</button>
+                <button class="nav-btn" data-genre="kids" data-section="channels">Kids</button>
+                <button class="nav-btn" data-genre="movies" data-section="movies">Movies</button>
+            </nav>
+            <div class="header-actions">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/>
+                        <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
 
-  <!-- MAIN CONTAINER -->
-  <div class="main-container">
-    <!-- HOME SECTION -->
-    <div id="home" class="content-section active">
-      <div class="hero-banner">
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+        <div class="container">
+            <input type="text" id="searchInput" placeholder="Search channels...">
+            <button class="close-search" id="closeSearch">×</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-content">
-          <div class="hero-badge">✨ Live Streaming</div>
-          <div class="hero-title">ZeroStream IPTV</div>
-          <div class="hero-description">
-            Experience premium Bangladeshi and Indian TV channels with high-definition streaming. Watch live TV, music, kids shows, and more.
-          </div>
-          <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="switchTab('bangladeshi')">▶ Browse Channels</button>
-            <button class="btn btn-secondary">ⓘ How to Use</button>
-          </div>
+            <h1 class="hero-title">Welcome to ZeroStream</h1>
+            <p class="hero-description">Your personal IPTV streaming experience with thousands of channels</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="document.querySelector('.channels-section').scrollIntoView({behavior: 'smooth'})">
+                    Explore Channels
+                </button>
+                <button class="hero-btn hero-btn-secondary" id="customVideoBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    Play Custom Video
+                </button>
+            </div>
         </div>
-      </div>
-      <div style="padding: 60px;">
-        <!-- BANGLADESHI ROW -->
-        <div class="scroll-row">
-          <div class="scroll-row-title">🇧🇩 Bangladeshi Channels</div>
-          <div class="scroll-container" id="bangladeshiContainer"></div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Channels Section -->
+    <main class="channels-section" id="channelsSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="sectionTitle">All Channels</h2>
+                <p class="section-count" id="channelCount">0 channels</p>
+            </div>
+            
+            <!-- Channels Grid -->
+            <div class="channels-grid" id="channelsGrid">
+                <!-- Channels will be inserted here by JavaScript -->
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2"/>
+                    <path d="M32 20V36M32 44V44.02" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <h3>No channels found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
         </div>
-        <!-- INDIAN BANGLA ROW -->
-        <div class="scroll-row">
-          <div class="scroll-row-title">🇮🇳 Indian Bangla Channels</div>
-          <div class="scroll-container" id="indianContainer"></div>
+    </main>
+
+    <!-- Movies Section -->
+    <section class="movies-section" id="moviesSection" style="display: none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Movies & Videos</h2>
+                <button class="add-movie-btn" id="addMovieBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14"/>
+                    </svg>
+                    Add Movie
+                </button>
+            </div>
+            
+            <!-- Movies Grid -->
+            <div class="movies-grid" id="moviesGrid">
+                <!-- Movies will be inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-movies" id="emptyMovies">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 20h48M20 12v8M44 12v8" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M30 30l4 2l-4 2v-4z" fill="currentColor"/>
+                </svg>
+                <h3>No movies added yet</h3>
+                <p>Click "Add Movie" to start building your collection</p>
+            </div>
         </div>
-        <!-- MUSIC ROW -->
-        <div class="scroll-row">
-          <div class="scroll-row-title">🎵 Music Channels</div>
-          <div class="scroll-container" id="musicContainer"></div>
+    </section>
+
+    <!-- Video Player Modal -->
+    <div class="player-modal" id="playerModal">
+        <div class="player-container">
+            <div class="player-header">
+                <h3 class="player-title" id="playerTitle">Channel Name</h3>
+                <button class="close-player" id="closePlayer">×</button>
+            </div>
+            <div class="player-wrapper">
+                <video id="videoPlayer" controls autoplay playsinline webkit-playsinline>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="player-info">
+                <span class="player-genre" id="playerGenre">Genre</span>
+                <span class="player-status">● LIVE</span>
+            </div>
         </div>
-        <!-- KIDS ROW -->
-        <div class="scroll-row">
-          <div class="scroll-row-title">👶 Kids Channels</div>
-          <div class="scroll-container" id="kidsContainer"></div>
-        </div>
-      </div>
     </div>
 
-    <!-- OTHER SECTIONS -->
-    <div id="bangladeshi" class="content-section">
-      <div class="section-title">🇧🇩 Bangladeshi Channels</div>
-      <div class="content-grid" id="bangladeshiGrid"></div>
-    </div>
-    <div id="indian" class="content-section">
-      <div class="section-title">🇮🇳 Indian Bangla Channels</div>
-      <div class="content-grid" id="indianGrid"></div>
-    </div>
-    <div id="music" class="content-section">
-      <div class="section-title">🎵 Music Channels</div>
-      <div class="content-grid" id="musicGrid"></div>
-    </div>
-    <div id="kids" class="content-section">
-      <div class="section-title">👶 Kids Channels</div>
-      <div class="content-grid" id="kidsGrid"></div>
-    </div>
-    <div id="docs" class="content-section">
-      <div class="section-title">🎥 Documentary Channels</div>
-      <div class="content-grid" id="docsGrid"></div>
-    </div>
-    <div id="islamic" class="content-section">
-      <div class="section-title">☪️ Islamic Channels</div>
-      <div class="content-grid" id="islamicGrid"></div>
-    </div>
-    <div id="sports" class="content-section">
-      <div class="section-title">⚽ Sports Channels</div>
-      <div class="content-grid" id="sportsGrid"></div>
-    </div>
-  </div>
+    <!-- Custom Video URL Modal -->
+    <div class="custom-video-modal" id="customVideoModal">
+        <div class="custom-video-container">
+            <div class="custom-video-header">
+                <h3>Add Movie / Video</h3>
+                <button class="close-custom" id="closeCustom">×</button>
+            </div>
+            <div class="custom-video-body">
+                <p class="custom-video-description">
+                    Add a video URL from Google Drive, Dropbox, or any direct MP4/M3U8 link. This will be saved to your Movies collection.
+                </p>
+                
+                <div class="input-group">
+                    <label for="customVideoTitle">Movie Title *</label>
+                    <input 
+                        type="text" 
+                        id="customVideoTitle" 
+                        placeholder="e.g., Inception (2010)"
+                        required
+                    >
+                </div>
 
-  <!-- PLAYER MODAL -->
-  <div class="player-modal" id="playerModal">
-    <div class="player-container">
-      <div class="player-header">
-        <div class="player-info">
-          <div class="player-title" id="playerTitle">Loading...</div>
-          <div class="player-subtitle" id="playerSubtitle">Select a stream</div>
+                <div class="input-group">
+                    <label for="customVideoUrl">Video URL *</label>
+                    <input 
+                        type="text" 
+                        id="customVideoUrl" 
+                        placeholder="https://example.com/video.mp4"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="customVideoPoster">Poster Image URL (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="customVideoPoster" 
+                        placeholder="https://example.com/poster.jpg"
+                    >
+                </div>
+                
+                <div class="custom-video-tips">
+                    <strong>📌 Supported Sources:</strong>
+                    <ul>
+                        <li><strong>Google Drive:</strong> Get direct download link (dl=1 parameter)</li>
+                        <li><strong>Dropbox:</strong> Change ?dl=0 to ?dl=1 in share link</li>
+                        <li><strong>Direct Links:</strong> MP4, WebM, M3U8 streams</li>
+                        <li><strong>Note:</strong> Telegram links typically don't work due to CORS restrictions</li>
+                    </ul>
+                </div>
+                
+                <div class="custom-video-actions">
+                    <button class="custom-video-play-btn" id="playCustomVideo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        Play Now
+                    </button>
+                    <button class="custom-video-save-btn" id="saveCustomVideo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        Save to Movies
+                    </button>
+                </div>
+            </div>
         </div>
-        <button class="close-player-btn" onclick="closePlayer()" title="Close (ESC)">✕</button>
-      </div>
-      <div class="video-wrapper">
-        <video class="hls-video" id="hlsVideo" controls playsinline></video>
-      </div>
-      <div class="player-controls">
-        <select class="stream-selector" id="streamSelector" onchange="changeStream(this.value)">
-          <option value="">Loading streams...</option>
-        </select>
-        <button class="btn-home" onclick="goHome()" title="Back to Home">⌂ Home</button>
-      </div>
     </div>
-  </div>
 
-  <!-- JavaScript Files (load at end for performance) -->
-  <script src="channels.js"></script>
-  <script src="script.js"></script>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Loading stream...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="channels.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
